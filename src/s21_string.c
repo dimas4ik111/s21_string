@@ -608,12 +608,12 @@ void *s21_to_lower(const char *str) {
 }
 
 void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
-    char *q = calloc(1, s21_strlen(src) + s21_strlen(str));
+    char *q = calloc(1024, s21_strlen(src) + s21_strlen(str));
     int  n = start_index;
-    if (q == S21_NULL || s21_strlen(src) == '\0' || q == 0 || n < 0
+    if (q == NULL || s21_strlen(src) == '\0' || q == 0 || n < 0
     || start_index > (s21_strlen(str) + s21_strlen(src))) {
         free(q);
-        q = S21_NULL;
+        q = NULL;
     } else {
         char *str1 = (char*) str;
         char *src1 = (char*) src;
@@ -627,9 +627,7 @@ void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
             q[start_index++] = src1[i];
         }
     }
-    char *zaglushka = q;
-    free(q);
-    return (zaglushka);
+    return (q);
 }
 
 void *s21_trim(const char *src, const char *trim_chars) {
@@ -645,26 +643,24 @@ void *s21_trim(const char *src, const char *trim_chars) {
         s21_reverse(newstr);
         s21_size_t seek_sym_right = s21_strspn(newstr, " ");
         s21_reverse(newstr);
-        res = (char*)calloc(src_length - seek_sym_left - seek_sym_right, sizeof(char));
+        res = (char*)calloc(src_length - seek_sym_left - seek_sym_right, 1024);
         for (s21_size_t i = seek_sym_left; i < src_length - seek_sym_right; i++) {
             res[i - seek_sym_left] = newstr[i];
         }
     } else {
         s21_size_t seek_sym_left = s21_strspn(newstr, trim_chars);
         if (seek_sym_left == src_length) {
-            res = (char*)calloc(src_length + 6, sizeof(char));
+            res = (char*)calloc(src_length + 6, 1024);
             res = "";
         } else {
             s21_reverse(newstr);
             s21_size_t seek_sym_right = s21_strspn(newstr, trim_chars);
             s21_reverse(newstr);
-            res = (char*)calloc(src_length - seek_sym_left - seek_sym_right, sizeof(char));
+            res = (char*)calloc(src_length - seek_sym_left - seek_sym_right, 1024);
             for (s21_size_t i = seek_sym_left; i < src_length - seek_sym_right; i++) {
                 res[i - seek_sym_left] = newstr[i];
             }
         }
     }
-    char *res1 = res;
-    free(res);
-    return res1;
+    return res;
 }

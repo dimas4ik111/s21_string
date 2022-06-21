@@ -143,11 +143,11 @@ void* s21_f_spaces(char* buf, s21_sprint* tab) {
 
 void s21_lengh_u(s21_sprint* tab) {
     if (tab->length == 'h') {
-        tab->num_u = (unsigned short)va_arg(tab->point, uint64_t);
+        tab->num_u = (unsigned short)va_arg(tab->point, unsigned long long);
     } else if (tab->length == 'l') {
-        tab->num_u = va_arg(tab->point, uint64_t);
+        tab->num_u = va_arg(tab->point, unsigned long);
     } else {
-        tab->num_u = (uint32_t)va_arg(tab->point, uint64_t);
+        tab->num_u = (unsigned int)va_arg(tab->point, unsigned long long);
     }
 }
 

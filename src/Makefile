@@ -6,10 +6,11 @@ CFLAGS=-Wall -Wextra -Werror
 CFLAGS_T=-Wall -Wextra -Werror --coverage
 LIB=s21_string.a
 
-all : $(LIB) test gcov_report
+all : clean $(LIB) test gcov_report
 
 $(LIB) : $(OBJ) s21_string.h
 	ar rcs $(LIB) $(OBJ)
+	ranlib $(LIB)
 
 test: build_report
 
@@ -30,8 +31,6 @@ report :
 	gcovr
 	gcovr --html-details coverage.html
 
-s21_string.o : s21_string.c s21_sprintf.c s21_test_string_a.c s21_test_sprintf.c s21_unit_tests.c s21_string.h
-	$(CC) $(CFLAGS) -c $^
 s21_string_t.o : s21_string.c  s21_string.h
 	$(CC) $(CFLAGS_T) -c $< -o $@
 s21_sprintf_t.o : s21_sprintf.c s21_string.h

@@ -2824,7 +2824,9 @@ START_TEST(s21_insert_test_3) {
     char s2[255] = "";
     int s3 = 5;
     char *s4 = "123456789";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_4) {
@@ -2832,7 +2834,9 @@ START_TEST(s21_insert_test_4) {
     char s2[255] = " ";
     int s3 = 5;
     char *s4 = "12345 6789";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_5) {
@@ -2840,7 +2844,9 @@ START_TEST(s21_insert_test_5) {
     char s2[255] = "j";
     int s3 = -5;
     char *s4 = NULL;
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_6) {
@@ -2848,7 +2854,9 @@ START_TEST(s21_insert_test_6) {
     char s2[255] = "J";
     int s3 = 0;
     char *s4 = "J123456789";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_7) {
@@ -2856,7 +2864,9 @@ START_TEST(s21_insert_test_7) {
     char s2[255] = "J";
     int s3 = 1;
     char *s4 = "1J23456789";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_8) {
@@ -2864,7 +2874,9 @@ START_TEST(s21_insert_test_8) {
     char s2[255] = "$$$$$$";
     int s3 = 4;
     char *s4 = "****$$$$$$**";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_10) {
@@ -2872,7 +2884,9 @@ START_TEST(s21_insert_test_10) {
     char s2[255] = "qqwertyuiasdfghhjkczxncnvmb";
     int s3 = 5;
     char *s4 = "12345qqwertyuiasdfghhjkczxncnvmb6789";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_11) {
@@ -2880,7 +2894,9 @@ START_TEST(s21_insert_test_11) {
     char s2[255] = "J ";
     int s3 = 7;
     char *s4 = "1234567J ";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_12) {
@@ -2888,7 +2904,9 @@ START_TEST(s21_insert_test_12) {
     char s2[255] = "Hello scholl21 - a am gay";
     int s3 = 1;
     char *s4 = "1Hello scholl21 - a am gay";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_insert_test_13) {
@@ -2896,50 +2914,66 @@ START_TEST(s21_insert_test_13) {
     char s2[255] = "Hello scholl21 - a am gay";
     int s3 = 0;
     char *s4 = "Hello scholl21 - a am gay1";
-    ck_assert_pstr_eq(s4, s21_insert(s1, s2, s3));
+    char* str = s21_insert(s1, s2, s3);
+    ck_assert_pstr_eq(s4, str);
+    free(str);
 } END_TEST
 
 
 START_TEST(s21_trim_test_1) {
     char s1[255] = "***/ **HELLO, SCHOOL 21!***/ **";
     char s2[255] = "*/ ";
-    ck_assert_pstr_eq("HELLO, SCHOOL 21!", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("HELLO, SCHOOL 21!", str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_2) {
     char s1[255] = "HELLO, SCHOOL 21!***/ **";
     char s2[255] = "*/ ";
-    ck_assert_pstr_eq("HELLO, SCHOOL 21!", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("HELLO, SCHOOL 21!", str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_3) {
     char s1[255] = "***/ **HELLO, SCHOOL 21!";
     char s2[255] = "*/ ";
-    ck_assert_pstr_eq("HELLO, SCHOOL 21!", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("HELLO, SCHOOL 21!", str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_4) {
     char *s1 = "\0";
     char s2[255] = "*/ ";
-    ck_assert_pstr_eq(S21_NULL, s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq(S21_NULL, str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_5) {
     char s1[255] = " ***/ **HELLO, SCHOOL 21!***/ **";
     char *s2 = " ";
-    ck_assert_pstr_eq("***/ **HELLO, SCHOOL 21!***/ **", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("***/ **HELLO, SCHOOL 21!***/ **", str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_7) {
     char s1[255] = "***HELLO,*SCHOOL*21!***";
     char s2[255] = "*/ ";
-    ck_assert_pstr_eq("HELLO,*SCHOOL*21!", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("HELLO,*SCHOOL*21!", str);
+    free(str);
 } END_TEST
 
 START_TEST(s21_trim_test_8) {
     char s1[255] = "     ***HELLO,*SCHOOL*21!***     ";
     char s2[255] = "";
-    ck_assert_pstr_eq("***HELLO,*SCHOOL*21!***", s21_trim(s1, s2));
+    char* str = s21_trim(s1, s2);
+    ck_assert_pstr_eq("***HELLO,*SCHOOL*21!***", str);
+    free(str);
 } END_TEST
 
 Suite *s21_string_a_suite(void) {
