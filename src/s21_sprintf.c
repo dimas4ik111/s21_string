@@ -34,7 +34,7 @@ int s21_sprintf(char *str, const char *format, ...) {
 
 s21_size_t s21_spec_iniciliation(char* str, const char* format, s21_sprint* tab) {
     char* buf = S21_NULL;
-    buf = (char*)calloc(1024, 1024);
+    buf = (char*)calloc(tab->weight, 1024);
     char* start = buf;
     s21_size_t len = 0;
     if (*format == 'u') {
@@ -211,7 +211,7 @@ char* s21_sprintf_d(char* buf, s21_sprint* tab) {
 
 char* s21_sprintf_s(char* buf, s21_sprint* tab) {
     *buf = '\0';
-    char* transmission = (char*)calloc(1024, 1024);
+    char* transmission = (char*)calloc(tab->weight, 1024);
     char* start_tr = transmission;
     transmission = (char*)va_arg(tab->point, char*);
 

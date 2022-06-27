@@ -460,6 +460,7 @@ char* s21_strncpy(char *copy, const char *data, s21_size_t n) {
     while (*data != '\0' && n--) {
         *copy++ = *data++;
     }
+    // addres[s21_strlen(addres)] = 0;
     return addres;
 }
 
