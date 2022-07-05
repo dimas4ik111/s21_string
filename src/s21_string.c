@@ -73,14 +73,26 @@ void *s21_memset(void *s, int c, s21_size_t n) {
     return(s);
 }
 
-char* s21_strcat(char* dest, const char* src) {
-    char* s = dest;
-    s21_size_t n = s21_strlen(dest);
+// char* s21_strcat(char* dest, const char* src) {
+//     char* s = dest;
+//     s21_size_t n = s21_strlen(dest);
 
-    for (s21_size_t i = n; i < n + s21_strlen(src); i++) {
-        dest[i] = src[i - n];
+//     for (s21_size_t i = n; i < n + s21_strlen(src); i++) {
+//         dest[i] = src[i - n];
+//     }
+//     return s;
+// }
+
+char* s21_strcat(char* dest , const char* src) {
+    char * ret = dest;
+    while (*dest != '\0') {
+        dest++;
     }
-    return s;
+    while ((*dest = *src)) {
+        dest++;
+        src++;
+    }
+    return ret;
 }
 
 char* s21_strchr(const char* s, int ch) {
@@ -455,13 +467,27 @@ int s21_strncmp(const char *data1, const char *data2, s21_size_t n) {
     return result;
 }
 
-char* s21_strncpy(char *copy, const char *data, s21_size_t n) {
-    char *addres = copy;
-    while (*data != '\0' && n--) {
-        *copy++ = *data++;
+// char* s21_strncpy(char *copy, const char *data, s21_size_t n) {
+//     char *addres = copy;
+//     while (*data != '\0' && n--) {
+//         *copy++ = *data++;
+//     }
+//     // addres[s21_strlen(addres)] = 0;
+//     return addres;
+// }
+
+char *s21_strncpy(char *dest, const char *src, size_t n) {
+    unsigned int i;
+    i = 0;
+    while (i < n && src[i]) {
+        dest[i] = src[i];
+        i++;
     }
-    // addres[s21_strlen(addres)] = 0;
-    return addres;
+    while (i < n) {
+        dest[i] = '\0';
+        i++;
+    }
+    return (dest);
 }
 
 char* s21_strpbrk(const char *str1, const char *str2) {
