@@ -3,6 +3,6 @@ Realization some func string.h and sprintf
 
 Makefile:
     
-    make s21_string.h
+    make s21_string.a
     make test
     make gcov_report
